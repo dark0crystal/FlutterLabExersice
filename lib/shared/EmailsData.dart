@@ -23,7 +23,6 @@ List<EmailMessage> emailList = [
     sentDate: "10/4/2025",
     message: "Congratulations for winning the contest and best regards.",
   ),
-  // Add 7 more emails
   EmailMessage(
     senderName: "Mona Saleh",
     senderEmail: "mona@moe.edu.om",
