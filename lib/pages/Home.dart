@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:lab_exersice/pages/logout.dart';
 import 'package:lab_exersice/pages/view_grid.dart';
 import 'package:lab_exersice/pages/view_list.dart';
 import 'package:lab_exersice/shared/EmailsData.dart';
 
 
 class Home extends StatelessWidget {
-  final String userName = "John Doe";
-  final String userEmail = "john@example.com";
+  
+  
 
   const Home({super.key});
 
@@ -22,28 +23,13 @@ class Home extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          // User info
-          Positioned(
-            top: 60,
-            left: 20,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(userName,
-                    style: const TextStyle(
-                        fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white)),
-                const SizedBox(height: 5),
-                Text(userEmail,
-                    style: const TextStyle(fontSize: 16, color: Colors.white70)),
-              ],
-            ),
-          ),
+          
           // 3 circular image buttons
           Positioned(
             top: 200,
             left: 30,
             child: CircularImageButton(
-              imagePath: 'lib/assets/list.png',
+              imagePath: 'lib/assets/bg1.jpeg',
               title: 'List View',
               onTap: () {
                 Navigator.push(context,
@@ -55,7 +41,7 @@ class Home extends StatelessWidget {
             top: 200,
             right: 30,
             child: CircularImageButton(
-              imagePath: 'lib/assets/grid.png',
+              imagePath: 'lib/assets/bg2.jpeg',
               title: 'Grid View',
               onTap: () {
                 Navigator.push(context,
@@ -67,10 +53,13 @@ class Home extends StatelessWidget {
             bottom: 60,
             left: MediaQuery.of(context).size.width / 2 - 40,
             child: CircularImageButton(
-              imagePath: 'lib/assets/logout.png',
+              imagePath: 'lib/assets/bg3.jpeg',
               title: 'Logout',
               onTap: () {
-                Navigator.popUntil(context, (route) => route.isFirst);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (_) => const LogoutPage()),
+                );
               },
             ),
           ),
@@ -79,7 +68,6 @@ class Home extends StatelessWidget {
     );
   }
 }
-
 class CircularImageButton extends StatelessWidget {
   final String imagePath;
   final String title;
@@ -98,17 +86,37 @@ class CircularImageButton extends StatelessWidget {
       onTap: onTap,
       child: Column(
         children: [
-          ClipOval(
-            child: Image.asset(
-              imagePath,
-              width: 80,
-              height: 80,
-              fit: BoxFit.cover,
-            ),
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              ClipOval(
+                child: Image.asset(
+                  imagePath,
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.black.withOpacity(0.4), // Semi-transparent overlay
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 6),
-          Text(title,
-              style: const TextStyle(color: Colors.white, fontSize: 14)),
         ],
       ),
     );
