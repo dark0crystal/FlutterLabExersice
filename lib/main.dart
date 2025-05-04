@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lab_exersice/pages/home.dart';
+import 'package:lab_exersice/pages/login.dart';
+
+
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Lab Exercise',
       debugShowCheckedModeBanner: false,
-      home: const Home(),
+      home: const LoginPage(), // Start at login
     );
   }
 }
-
-
