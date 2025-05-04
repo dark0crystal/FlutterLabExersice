@@ -13,7 +13,7 @@ class ViewListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Email List View"),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.white30,
       ),
       body: ListView.builder(
         itemCount: emailList.length,

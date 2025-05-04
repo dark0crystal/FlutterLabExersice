@@ -91,10 +91,18 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: const Text("Login"),
               ),
+              SizedBox(height: 20),
+              Column(
+                children: [
+                  Text("Email:user@gmail.com"),
+                  Text("Password:user1234"),
+                ],
+              )
              
             ],
           ),
         ),
+        
       ),
     );
   }
